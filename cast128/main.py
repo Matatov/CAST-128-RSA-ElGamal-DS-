@@ -1,12 +1,9 @@
 import random
-import sys
 from hashlib import sha256
 import idea_cbc
 import elgamal
-import rsa
-from random import randint
 
-from cast128 import rsa_encrypt
+import rsa_encrypt
 
 """ 
     1. Generate a pair of ELGamal keys, public and private  V
