@@ -1,3 +1,4 @@
+import math
 from math import sqrt
 # required for the sqrt() function, if you want to avoid doing **0.5
 import random
@@ -56,10 +57,23 @@ def isprime(n):
 
 
 def getKeys(p, q):
+    """
+    In this version of code function returns very small value of e.
+    There is an option to improve this weekness by foolows steps:
+        if math.log(i) > 50 (for example)
+        or
+        if num_of_digits(i) > 50
+    But these increase computation time drastically
+
+    Additional approach is to keep the list of prime numbers
+
+    """
     n = p * q   # n is public, p and q are private
     phi = (p - 1) * (q - 1)
+
     for i in range(2, phi):
         if gcd(phi, i) == 1:
+
             e = i
             break
 
@@ -70,6 +84,12 @@ def getKeys(p, q):
 
     return (e, n), (d, n)
 
+def num_of_digits(num):
+    count = 0
+    while num != 0:
+        num //= 10
+        count += 1
+    return count
 
 def getRandomPrime(primeSize):
     x = random.randint(1 << (primeSize - 1), (1 << primeSize) - 1)
